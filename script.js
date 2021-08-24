@@ -1,30 +1,9 @@
-const productList = document.getElementById('products-list');
+const API_Token = 'b90be1849d2f6aa2a14abc37ac91c25f';
+const url = 'https://gnews.io/api/v4/top-headlines?token='
 
-console.log(productList);
+const getJson = async () => {
+  const json = await fetch(`${url}${API_Token}`);
+  return json.json();
+}
 
-const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-const requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
-
-// fetch("https://world.openfoodfacts.org/api/v0/product/04963406", requestOptions)
-//   .then(response => response.json())
-//   .then(result => console.log(result.product))
-//   .catch(error => console.log('error', error)
-// );
-
-
-const categories =  fetch("https://br.openfoodfacts.org/categories.json", requestOptions)
-  .then(response => response.json())
-  .then(result => result.tags)
-  .catch(error => console.log('error', error)
-);
-
-categories.then(result => result.forEach(element => {
-    console.log(element.name);
-  })
-);
+const news =  getJson().then((promisse) => console.log(promisse));
