@@ -4,7 +4,9 @@
   "description": "Projeto em grupo Trybe",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "test",
+    "js": "js",
+    "key": "key"
   },
   "scripts": {
     "test": "jest"
@@ -24,6 +26,7 @@
     "eslint": "^7.32.0"
   },
   "dependencies": {
+    "common.js": "^1.1.1",
     "eslint-config-trybe-fundamentals": "^1.1.1"
   }
 }

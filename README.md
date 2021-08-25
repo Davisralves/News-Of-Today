@@ -1,2 +1,2 @@
 # imFit
-Projeto em grupo Trybe
+Projeto em grupo Trybe !
