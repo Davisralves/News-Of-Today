@@ -7,6 +7,11 @@ const getJson = async () => {
   return json.json();
 };
 
-// console.log(`${url}${apiToken}`);
+const main = async () => {
+  const news = await getJson();
+  console.log(news);
+};
 
-const news =  getJson().then((promisse) => console.log(promisse));
+window.onload = async function() {
+  main();
+};
