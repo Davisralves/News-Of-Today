@@ -39,6 +39,14 @@ const printNewsByCategory = async (category, event) => {
   printNews(news.articles, document.querySelector('section'));
 };
 
+const saveNews = () => sessionStorage.setItem('news', document.querySelector('section').innerHTML);
+
+const pickNewsFromStorage = () => {
+  const news = sessionStorage.getItem('news');
+  if(news) { document.querySelector('section') = news }
+};
+
+
 const main = async () => {
   // const news = await getJson();
   const news = object;
