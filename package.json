@@ -1,0 +1,29 @@
+{
+  "name": "imfit",
+  "version": "1.0.0",
+  "description": "Projeto em grupo Trybe",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davisralves/imFit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Davisralves/imFit/issues"
+  },
+  "homepage": "https://github.com/Davisralves/imFit#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "eslint-config-trybe-fundamentals": "^1.1.1"
+  }
+}
