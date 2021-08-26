@@ -5,11 +5,11 @@ import { object } from '../js/object.js';
 let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
-  if(event !== '') {event = `${event.path[0].innerText}`};
+  if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
   if (event === 'home') url = 'https://gnews.io/api/v4/top-headlines?&';
-  if (event !== '' && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
+  if (event !== 0 && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
+  if (event === 0) event = '';
   const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
-  console.log(`${url}${event}&token=${apiToken}`);
   return await promisse.json();
 };
 
@@ -32,7 +32,7 @@ const verifyPageItems = () => {
   };
 };
 
-const main = async (event = '') => {
+const main = async (event = 0) => {
   verifyPageItems();
   const news = await getJson(event);
   printNews(news.articles);
@@ -64,8 +64,16 @@ const addEventToNav = () => {
   })
 };
 
+const searchByInput = () => main(document.querySelector('input').value);
+
+const addEventToButton = () => {
+  const button = document.querySelector('button');
+  button.addEventListener('click', searchByInput);
+};
+
 window.onload = async function() {
   main();
   addEventToNav();
+  addEventToButton();
 };
   
