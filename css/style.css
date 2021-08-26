@@ -62,6 +62,33 @@
 }
 
 /* Main */
-h4 {
-  padding: 1.2rem;
+.col a {
+  text-decoration: none;
+}
+
+
+
+.col h4 {
+  padding: 0 .1rem;
+  color: black;
+}
+
+.col p {
+  color: darkgray;
+}
+
+@media screen and ( min-width : 766px ) {
+
+  .main-col {
+    width: 90vw;
+  }
+  
+  .main-col .card {
+    flex-direction: row;
+  }
+  
+  .main-col img {
+    width: 350px;
+    max-width: 100%;
+  }
 }
