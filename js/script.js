@@ -14,10 +14,11 @@ const getJson = async (parameter = '') => {
 const printNews = (news) => {
   const newsMain = document.getElementById('news-main');
 
-  news.forEach((New) => {
+  news.forEach((New, index) => {
     const { title, description, image } = New;
     const linkNews = New.url;
     const column = addNews(title, description, image, linkNews);
+    if (index < 1) column.classList.add('main-col');
     newsMain.appendChild(column);
   });
 };
