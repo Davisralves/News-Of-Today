@@ -3,19 +3,60 @@
   justify-content: space-evenly;
 }
 
-.b-example-divider {
-  height: 3rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: solid rgba(0, 0, 0, 0.15);
-  border-width: 1px 0;
-  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+/* 
+  Pegamos como referecia o efeito da barra de pesquisa do 
+  seguinte repositorio
+  ref: https://github.com/antonyleme/CSS-Animations
+*/
+.search{
+	background-color: #222f3e;
+	position: absolute;
+  top: 4%;
+  left: 80%;
+
+	transform: translate(-50%, -50%);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.form-control-dark {
-  color: white;
-  background-color: var(--bs-dark);
-  border-color: var(--bs-gray);
+.search-txt, .search-btn {
+	transition: 0.8s;
+	outline: none;
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.search-txt {
+	color: white;
+	width: 0;
+	float: left;
+}
+
+.search-btn {
+	border-radius: 40px;
+	color: white;
+	width: 40px;
+	height: 40px;
+}
+
+.search-btn:active {
+	background-color: rgba(255,255,255,.5);
+}
+
+.search:hover > .search-txt {
+	width: 200px;
+	padding: 10px;
+}
+
+.search:hover > .search-btn {
+	transform: rotate(360deg);
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 .form-control-dark:focus {
@@ -51,14 +92,18 @@
 
 @media screen and ( max-width : 991px ) {
 
-  .form-control {
-    display: none;
+  .search {
+    top: 4.5%;
+    left: 85%;
   }
 
-  .form__search-news {
-    display: contents;
-  }
+}
 
+@media screen and ( max-width : 840px ) {
+
+  .search {
+    left: 87%;
+  }
 }
 
 /* Main */
