@@ -1,4 +1,5 @@
 import { apiToken } from '../key/apiKey.js';
+import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
 
 console.log(apiToken);
@@ -9,7 +10,9 @@ const getJson = async (parameter = '') => {
   return await promisse.json();
 };
 
-const acess = (event) => window.location.href = event.path[0].name;
+// ------ anderson ------
+const printNews = (news) => {
+  const newsMain = document.getElementById('news-main');
 
 const printNews = (news, section) => {
   news.forEach((New, index) => {
@@ -32,6 +35,21 @@ const printNews = (news, section) => {
   });
 };
 
+const main = async () => {
+  const news = await getJson();
+  printNews(news.articles);
+}
+// --------------------------
+
+const acess = (event) => window.location.href = event.path[0].name;
+
+// const printNews = (news, section) => {
+//   news.forEach((New) => {
+//     const { title, description, image, url } = New;
+    
+//   });
+// };
+
 const printNewsByCategory = async (category, event) => {
   if(!category) {
     category = `&"${event.innerText}"`;
@@ -48,11 +66,11 @@ const pickNewsFromStorage = () => {
 };
 
 
-const main = async () => {
-  // const news = await getJson();
-  const news = object;
-  printNews(news /*.articles*/, document.querySelector('section'));
-};
+// const main = async () => {
+//   // const news = await getJson();
+//   const news = object;
+//   printNews(news /*.articles*/, document.querySelector('section'));
+// };
 
 const addEventToNav = () => {
   navMenu = document.getElementsByClassName('nav').firstChild();
