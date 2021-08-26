@@ -18,24 +18,20 @@ export const addNews = (title, description, image, linkNews) => {
 
   const p = document.createElement('p');
   p.classList.add('card-text');
-  p.innerText = description.substr(0, 180);
+  p.innerText = description.substr(0, 230) + '...';
 
-  const buttonView = document.createElement('a');
-  buttonView.href = linkNews;
-  buttonView.target = '_blank';
-  buttonView.classList.add('btn');
-  buttonView.classList.add('btn-sm');
-  buttonView.classList.add('btn-outline-secondary');
-  buttonView.innerText = 'Ver';
+  const openLink = document.createElement('a');
+  openLink.href = linkNews;
+  openLink.target = '_blank';
 
+  cardBody.appendChild(h4);
   cardBody.appendChild(p);
-  cardBody.appendChild(buttonView);
 
   card.appendChild(img);
-  card.appendChild(h4);
   card.appendChild(cardBody);
 
-  divCol.appendChild(card);
+  openLink.appendChild(card);
+  divCol.appendChild(openLink);
 
   return divCol;
 }
