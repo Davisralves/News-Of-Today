@@ -9,10 +9,16 @@ const getJson = async (parameter = '') => {
   const promisse = await fetch(`${url}${parameter}${apiToken}`);
   return await promisse.json();
 };
-const printNews = (news, section) => {
-news.forEach((New) => {
-const { title, description, image, url } = New;
-});
+
+const printNews = (news) => {
+  const newsMain = document.getElementById('news-main');
+
+  news.forEach((New) => {
+    const { title, description, image } = New;
+    const linkNews = New.url;
+    const column = addNews(title, description, image, linkNews);
+    newsMain.appendChild(column);
+  });
 };
 
 const main = async () => {
