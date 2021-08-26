@@ -12,9 +12,10 @@ const getJson = async (parameter = '') => {
 const acess = (event) => window.location.href = event.path[0].name;
 
 const printNews = (news, section) => {
-  news.forEach((New) => {
+  news.forEach((New, index) => {
     const { title, description, image, url } = New;
     const div = document.createElement('div');
+    if (index === 0) div.id = 'firstNew';
     const h4 = document.createElement('h4');
     h4.innerText = title;
     const img = document.createElement('img');
