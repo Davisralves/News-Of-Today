@@ -64,8 +64,6 @@ const addEventToNav = () => {
   })
 };
 
-
-
 window.onload = async function() {
   main();
   addEventToNav();
