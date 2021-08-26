@@ -9,30 +9,10 @@ const getJson = async (parameter = '') => {
   const promisse = await fetch(`${url}${parameter}${apiToken}`);
   return await promisse.json();
 };
-
-// ------ anderson ------
-const printNews = (news) => {
-  const newsMain = document.getElementById('news-main');
-
 const printNews = (news, section) => {
-  news.forEach((New, index) => {
-    const { title, description, image, url } = New;
-    const div = document.createElement('div');
-    if (index === 0) div.id = 'firstNew';
-    const h4 = document.createElement('h4');
-    h4.innerText = title;
-    const img = document.createElement('img');
-    img.src = image;
-    img.name = url;
-    console.log(img.value);
-    img.addEventListener('click', acess);
-    const p = document.createElement('p');
-    p.innerText = description;
-    section.appendChild(div);
-    div.appendChild(h4);
-    div.appendChild(img);
-    div.appendChild(p);
-  });
+news.forEach((New) => {
+const { title, description, image, url } = New;
+});
 };
 
 const main = async () => {
@@ -43,12 +23,7 @@ const main = async () => {
 
 const acess = (event) => window.location.href = event.path[0].name;
 
-// const printNews = (news, section) => {
-//   news.forEach((New) => {
-//     const { title, description, image, url } = New;
-    
-//   });
-// };
+
 
 const printNewsByCategory = async (category, event) => {
   if(!category) {
@@ -75,9 +50,8 @@ const pickNewsFromStorage = () => {
 const addEventToNav = () => {
   navMenu = document.getElementsByClassName('nav').firstChild();
   console.log(navMenu);
-}
+};
 
 window.onload = async function() {
   main();
-  addEventToNav();
-};
+}
