@@ -2,7 +2,7 @@ import { apiToken } from '../key/apiKey.js';
 import { object } from '../js/object.js';
 
 console.log(apiToken);
-const url = ('https://gnews.io/api/v4/top-headlines?&country=br&token=');
+// const url = ('https://gnews.io/api/v4/top-headlines?&country=br&token=');
 
 const getJson = async (parameter = '') => {
   const promisse = await fetch(`${url}${parameter}${apiToken}`);
@@ -54,6 +54,12 @@ const main = async () => {
   printNews(news /*.articles*/, document.querySelector('section'));
 };
 
+const addEventToNav = () => {
+  navMenu = document.getElementsByClassName('nav').firstChild();
+  console.log(navMenu);
+}
+
 window.onload = async function() {
   main();
+  addEventToNav();
 };
