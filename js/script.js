@@ -25,16 +25,16 @@ const printNews = (news) => {
 };
 
 const main = async (event = '') => {
-  const main = document.querySelector('main');
-  main.removeChild(main.firstChild);
+  const main =  document.querySelector('#news-main');
+  const mainItems = document.querySelectorAll('.col');
+  if(mainItems.length > 1) {
+  mainItems.forEach((item) => main.removeChild(item));
+  };
   const news = await getJson(event);
-  console.log(news);
   printNews(news.articles);
 }
 
 const acess = (event) => window.location.href = event.path[0].name;
-
-
 
 const printNewsByCategory = async (category, event) => {
   if(!category) {
@@ -51,17 +51,8 @@ const pickNewsFromStorage = () => {
   if(news) { document.querySelector('section') = news }
 };
 
-
-// const main = async () => {
-//   // const news = await getJson();
-//   const news = object;
-//   printNews(news /*.articles*/, document.querySelector('section'));
-// };
-const funciono = (event) => console.log(event.path[0].innerText);
-
 const addEventToNav = () => {
   const nav = document.querySelectorAll('li');
-  console.log(nav);
   nav.forEach((item, index) => {
     if(index <= 4) {
       item.addEventListener('click', main);
