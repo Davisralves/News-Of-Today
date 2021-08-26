@@ -24,12 +24,16 @@ const printNews = (news) => {
   });
 };
 
-const main = async (event = '') => {
+const verifyPageItems = () => {
   const main =  document.querySelector('#news-main');
   const mainItems = document.querySelectorAll('.col');
   if(mainItems.length > 1) {
   mainItems.forEach((item) => main.removeChild(item));
   };
+};
+
+const main = async (event = '') => {
+  verifyPageItems();
   const news = await getJson(event);
   printNews(news.articles);
 }
