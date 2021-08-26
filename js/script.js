@@ -2,15 +2,17 @@ import { apiToken } from '../key/apiKey.js';
 import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
 
-console.log(apiToken);
-const url = ('https://gnews.io/api/v4/top-headlines?&country=br&token=');
+let url = ('https://gnews.io/api/v4/top-headlines?&');
 
-const getJson = async (parameter = '') => {
-  const promisse = await fetch(`${url}${parameter}${apiToken}`);
+const getJson = async (event) => {
+  if(event !== '') {event = `${event.path[0].innerText}`};
+  if (event === 'home') url = 'https://gnews.io/api/v4/top-headlines?&';
+  if (event !== '' && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
+  const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
+  console.log(`${url}${event}&token=${apiToken}`);
   return await promisse.json();
 };
 
-// ------ anderson ------
 const printNews = (news) => {
   const newsMain = document.getElementById('news-main');
 
@@ -22,20 +24,21 @@ const printNews = (news) => {
   });
 };
 
-const main = async () => {
-  const news = await getJson();
+const verifyPageItems = () => {
+  const main =  document.querySelector('#news-main');
+  const mainItems = document.querySelectorAll('.col');
+  if(mainItems.length > 1) {
+  mainItems.forEach((item) => main.removeChild(item));
+  };
+};
+
+const main = async (event = '') => {
+  verifyPageItems();
+  const news = await getJson(event);
   printNews(news.articles);
 }
-// --------------------------
 
 const acess = (event) => window.location.href = event.path[0].name;
-
-// const printNews = (news, section) => {
-//   news.forEach((New) => {
-//     const { title, description, image, url } = New;
-    
-//   });
-// };
 
 const printNewsByCategory = async (category, event) => {
   if(!category) {
@@ -52,13 +55,17 @@ const pickNewsFromStorage = () => {
   if(news) { document.querySelector('section') = news }
 };
 
-
-// const main = async () => {
-//   // const news = await getJson();
-//   const news = object;
-//   printNews(news /*.articles*/, document.querySelector('section'));
-// };
+const addEventToNav = () => {
+  const nav = document.querySelectorAll('li');
+  nav.forEach((item, index) => {
+    if(index <= 4) {
+      item.addEventListener('click', main);
+    }
+  })
+};
 
 window.onload = async function() {
   main();
+  addEventToNav();
 };
+  
