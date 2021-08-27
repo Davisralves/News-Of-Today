@@ -18,3 +18,29 @@ describe('Testando função getJson()', () => {
     expect(mockFunctions.getJson('outro')).toBe('3');
    }); 
 });
+
+describe('Testando função print News', () =>{
+  test('Testando se função pritn news existe', () => {
+    expect(typeof(printNews)).toEqual('function');
+  });
+});
+
+test('Testando se função verifyPageItems() existe', () => {
+  expect(typeof(verifyPageItems)).toEqual('function');
+});
+
+test('Testando se função main Existe', () => {
+  expect(typeof(main)).toEqual('function');
+});
+
+test('Testando se função addEventToNav existe', () => {
+  expect(typeof(addEventToNav)).toEqual('function');
+});
+
+test('Testando se função searchByInput existe', () => {
+  expect(typeof(searchByInput)).toEqual('function');
+});
+
+test('Testando se função addEventToButton existe', () => {
+  expect(typeof(addEventToButton)).toEqual('function');
+});
