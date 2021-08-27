@@ -1,2 +1,2 @@
-# imFit
-Projeto em grupo Trybe !
+# Site NewsOfToday
+Projeto em grupo da Trybe !
