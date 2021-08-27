@@ -65,6 +65,25 @@ const addEventToNav = () => {
   })
 };
 
+const menuHeader = document.getElementById('menu-header');
+
+menuHeader.addEventListener('click', (e) => {
+  const linkClicked = e.target;
+  removeLinkClickedBefore();
+  linkClicked.classList.remove('text-white');
+  linkClicked.classList.add('text-secondary');
+});
+
+const removeLinkClickedBefore = () => {
+  const itemsMenu = document.querySelectorAll('.link-menu-header');
+  itemsMenu.forEach(item => {
+    if(item.classList.contains('text-secondary')) {
+      item.classList.remove('text-secondary');
+      item.classList.add('text-white');
+    }
+  });
+}
+
 window.onload = async function() {
   main();
   addEventToNav();
