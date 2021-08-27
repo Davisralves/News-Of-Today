@@ -1,19 +1,17 @@
 import { apiToken } from '../key/apiKey.js';
-import { addNews } from './addOneNews.js'
-import { object } from '../js/object.js';
-export {getJson};
+import { addNews } from './addOneNews.js';
 
 let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
   console.log(event);
-  if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
+  if (event !== 0 && typeof (event) !== 'string') { event = `${event.path[0].innerText}`};
   if (event === 'home') url = 'https://gnews.io/api/v4/top-headlines?&';
-  if (event !== 0 && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
+  if (event !== 0 && event !== 'home') url = 'https://gnews.io/api/v4/search?q=';
   if (event === 0) event = '';
   const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
   console.log(`${url}${event}&country=br&token=${apiToken}`);
-  return await promisse.json();
+  return promisse.json();
 };
 
 const printNews = (news) => {
@@ -29,42 +27,32 @@ const printNews = (news) => {
 };
 
 const verifyPageItems = () => {
-  const main =  document.querySelector('#news-main');
+  const main = document.querySelector('#news-main');
   const mainItems = document.querySelectorAll('.col');
-  if(mainItems.length > 1) {
-  mainItems.forEach((item) => main.removeChild(item));
-  };
+  if (mainItems.length > 1) {
+    mainItems.forEach((item) => main.removeChild(item));
+  }
 };
 
 const main = async (event = 0) => {
   verifyPageItems();
   const news = await getJson(event);
   printNews(news.articles);
-}
-
-const acess = (event) => window.location.href = event.path[0].name;
-
-const printNewsByCategory = async (category, event) => {
-  if(!category) {
-    category = `&"${event.innerText}"`;
-  } else category = `&"${category}"`;
-  const news = await getJson(category);
-  printNews(news.articles, document.querySelector('section'));
 };
 
 const addEventToNav = () => {
   const nav = document.querySelectorAll('li');
   nav.forEach((item, index) => {
-    if(index <= 4) {
+    if (index <= 4) {
       item.addEventListener('click', main);
     }
-  })
+  });
 };
 
 const searchByInput = () => {
   main(document.querySelector('#input-news').value);
   console.log(document.querySelector('#input-news').value);
-}
+};
 
 const addEventToButton = () => {
   const button = document.querySelector('#button-search');
@@ -74,8 +62,29 @@ const addEventToButton = () => {
   });
 };
 
-window.onload = async function() {
+const removeLinkClickedBefore = () => {
+  const itemsMenu = document.querySelectorAll('.link-menu-header');
+  itemsMenu.forEach((item) => {
+    if (item.classList.contains('text-secondary')) {
+      item.classList.remove('text-secondary');
+      item.classList.add('text-white');
+    }
+  });
+};
+
+const menuHeader = document.getElementById('menu-header');
+
+menuHeader.addEventListener('click', (e) => {
+  const linkClicked = e.target;
+  removeLinkClickedBefore();
+  linkClicked.classList.remove('text-white');
+  linkClicked.classList.add('text-secondary');
+});
+
+window.onload = async function () {
   main();
   addEventToNav();
   addEventToButton();
 };
+
+module.exports = { getJson };
