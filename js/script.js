@@ -13,6 +13,14 @@ const getJson = async (event) => {
   return promisse.json();
 };
 
+const removeLinkClickedBefore = () => {
+  const itemsMenu = document.querySelectorAll('.link-menu-header');
+  itemsMenu.forEach((item) => {
+      item.classList.remove('text-secondary');
+      item.classList.add('text-white');
+  });
+};
+
 const printNews = (news) => {
   const newsMain = document.getElementById('news-main');
 
@@ -33,10 +41,8 @@ const verifyPageItems = () => {
   }
 };
 
-const main = async (event = 0) => {
-  verifyPageItems();
-  const news = await getJson(event);
-  printNews(news.articles);
+const searchByInput = () => {
+  main(document.querySelector('#input-news').value);
 };
 
 const addEventToNav = () => {
@@ -44,12 +50,13 @@ const addEventToNav = () => {
   nav.forEach((item, index) => {
     if (index <= 4) {
       item.addEventListener('click', main);
-    }
+      item.addEventListener('click',(e) => {
+        const linkClicked = e.target;
+        removeLinkClickedBefore();
+        linkClicked.classList.remove('text-white');
+        linkClicked.classList.add('text-secondary');
+      })};
   });
-};
-
-const searchByInput = () => {
-  main(document.querySelector('#input-news').value);
 };
 
 const addEventToButton = () => {
@@ -60,24 +67,11 @@ const addEventToButton = () => {
   });
 };
 
-const removeLinkClickedBefore = () => {
-  const itemsMenu = document.querySelectorAll('.link-menu-header');
-  itemsMenu.forEach((item) => {
-    if (item.classList.contains('text-secondary')) {
-      item.classList.remove('text-secondary');
-      item.classList.add('text-white');
-    }
-  });
+const main = async (event = 0) => {
+  verifyPageItems();
+  const news = await getJson(event);
+  printNews(news.articles);
 };
-
-const menuHeader = document.getElementById('menu-header');
-
-menuHeader.addEventListener('click', (e) => {
-  const linkClicked = e.target;
-  removeLinkClickedBefore();
-  linkClicked.classList.remove('text-white');
-  linkClicked.classList.add('text-secondary');
-});
 
 window.onload = async function () {
   main();
