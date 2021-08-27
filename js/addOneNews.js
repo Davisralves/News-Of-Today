@@ -33,6 +33,4 @@ const addNews = (title, description, image, linkNews) => {
   return divCol;
 };
 
-export default {
-  addNews,
-};
+export { addNews };
