@@ -3,7 +3,7 @@ import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
 export {getJson};
 
-// let url = ('https://gnews.io/api/v4/top-headlines?&');
+let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
   if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
@@ -51,13 +51,6 @@ const printNewsByCategory = async (category, event) => {
   printNews(news.articles, document.querySelector('section'));
 };
 
-const saveNews = () => sessionStorage.setItem('news', document.querySelector('section').innerHTML);
-
-const pickNewsFromStorage = () => {
-  const news = sessionStorage.getItem('news');
-  if (news) { document.querySelector('section') = news }
-};
-
 const addEventToNav = () => {
   const nav = document.querySelectorAll('li');
   nav.forEach((item, index) => {
@@ -84,5 +77,3 @@ window.onload = async function() {
   addEventToNav();
   addEventToButton();
 };
-
-export getJson;
