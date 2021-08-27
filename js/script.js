@@ -42,9 +42,9 @@ const verifyPageItems = () => {
 };
 
 const main = async (event = 0) => {
-  verifyPageItems();
-  const news = await getJson(event);
-  printNews(news.articles);
+  verifyPageItems(); // Verifica se existem noticias na pagina e remove se existirem.
+  const news = await getJson(event); // busca noticias na api baseado no evento que a encadeou.
+  printNews(news.articles); // Coloca as noticias na pagina.
 };
 
 const addEventToNav = () => {
@@ -75,9 +75,9 @@ const addEventToButton = () => {
 };
 
 window.onload = async function () {
-  main();
-  addEventToNav();
-  addEventToButton();
+  main(); // Faz "Tudo"
+  addEventToNav(); // adiciona eventos a barra de navegação
+  addEventToButton(); // adicona evento ao botão de pesquisa
 };
 
 module.exports = { getJson };

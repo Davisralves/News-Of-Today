@@ -11,7 +11,7 @@ describe('Testando função getJson()', () => {
       if (event === 0) event = '4';
       return event;
     });
-   test('Testa se os "if" funcionam corretamente)', () => {
+  test('Testa se os "if" funcionam corretamente)', () => {
     expect(mockFunctions.getJson(0)).toBe('4');
     expect(mockFunctions.getJson(1)).toBe('1');
     expect(mockFunctions.getJson('home')).toBe('2');
