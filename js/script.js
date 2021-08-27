@@ -2,7 +2,7 @@ import { apiToken } from '../key/apiKey.js';
 import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
 
-let url = ('https://gnews.io/api/v4/top-headlines?&');
+// let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
   if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
