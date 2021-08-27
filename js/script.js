@@ -10,6 +10,7 @@ const getJson = async (event) => {
   if (event !== 0 && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
   if (event === 0) event = '';
   const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
+  console.log(`${url}${event}&country=br&token=${apiToken}`);
   return await promisse.json();
 };
 
@@ -69,6 +70,11 @@ const searchByInput = () => main(document.querySelector('input').value);
 const addEventToButton = () => {
   const button = document.querySelector('button');
   button.addEventListener('click', searchByInput);
+  button.addEventListener('keypress', (event) => {
+    event.preventDefault();
+    if(event.key === 'Enter') {
+      button.click();
+    }});
 };
 
 window.onload = async function() {
