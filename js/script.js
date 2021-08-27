@@ -2,7 +2,6 @@ import { apiToken } from '../key/apiKey.js';
 import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
 
-
 // let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
@@ -81,7 +80,7 @@ const addEventToButton = () => {
     }});
 };
 
-window.onload = async function() {
+window.onload = async function () {
   main();
   addEventToNav();
   addEventToButton();
