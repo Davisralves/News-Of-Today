@@ -74,7 +74,7 @@ const addEventToButton = () => {
   });
 };
 
-window.onload = async function () {
+window.onload = () => {
   main(); // Faz "Tudo"
   addEventToNav(); // adiciona eventos a barra de navegação
   addEventToButton(); // adicona evento ao botão de pesquisa
