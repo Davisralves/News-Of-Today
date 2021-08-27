@@ -16,8 +16,8 @@ const getJson = async (event) => {
 const removeLinkClickedBefore = () => {
   const itemsMenu = document.querySelectorAll('.link-menu-header');
   itemsMenu.forEach((item) => {
-      item.classList.remove('text-secondary');
-      item.classList.add('text-white');
+    item.classList.remove('text-secondary');
+    item.classList.add('text-white');
   });
 };
 
@@ -41,8 +41,10 @@ const verifyPageItems = () => {
   }
 };
 
-const searchByInput = () => {
-  main(document.querySelector('#input-news').value);
+const main = async (event = 0) => {
+  verifyPageItems();
+  const news = await getJson(event);
+  printNews(news.articles);
 };
 
 const addEventToNav = () => {
@@ -50,13 +52,18 @@ const addEventToNav = () => {
   nav.forEach((item, index) => {
     if (index <= 4) {
       item.addEventListener('click', main);
-      item.addEventListener('click',(e) => {
+      item.addEventListener('click', (e) => {
         const linkClicked = e.target;
         removeLinkClickedBefore();
         linkClicked.classList.remove('text-white');
         linkClicked.classList.add('text-secondary');
-      })};
+      });
+    }
   });
+};
+
+const searchByInput = () => {
+  main(document.querySelector('#input-news').value);
 };
 
 const addEventToButton = () => {
@@ -65,12 +72,6 @@ const addEventToButton = () => {
     event.preventDefault();
     searchByInput();
   });
-};
-
-const main = async (event = 0) => {
-  verifyPageItems();
-  const news = await getJson(event);
-  printNews(news.articles);
 };
 
 window.onload = async function () {
