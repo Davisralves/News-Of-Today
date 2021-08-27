@@ -60,16 +60,13 @@ const addEventToNav = () => {
   })
 };
 
-const searchByInput = () => main(document.querySelector('input').value);
+const searchByInput = () => main(document.querySelector('#input-news').value);
+
+console.log(searchByInput);
 
 const addEventToButton = () => {
-  const button = document.querySelector('button');
+  const button = document.querySelector('#button-search');
   button.addEventListener('click', searchByInput);
-  button.addEventListener('keypress', (event) => {
-    event.preventDefault();
-    if(event.key === 'Enter') {
-      button.click();
-    }});
 };
 
 window.onload = async function() {
