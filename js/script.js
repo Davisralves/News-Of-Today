@@ -6,13 +6,11 @@ export {getJson};
 let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
-  console.log(event);
   if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
   if (event === 'home') url = 'https://gnews.io/api/v4/top-headlines?&';
   if (event !== 0 && event !== 'home') url = `https://gnews.io/api/v4/search?q=`;
   if (event === 0) event = '';
   const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
-  console.log(`${url}${event}&country=br&token=${apiToken}`);
   return await promisse.json();
 };
 
@@ -63,7 +61,6 @@ const addEventToNav = () => {
 
 const searchByInput = () => {
   main(document.querySelector('#input-news').value);
-  console.log(document.querySelector('#input-news').value);
 }
 
 const addEventToButton = () => {
