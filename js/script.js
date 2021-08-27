@@ -4,14 +4,22 @@ import { addNews } from './addOneNews.js';
 let url = ('https://gnews.io/api/v4/top-headlines?&');
 
 const getJson = async (event) => {
+<<<<<<< HEAD
   console.log(event);
   if (event !== 0 && typeof (event) !== 'string') { event = `${event.path[0].innerText}`};
+=======
+  if (event !== 0 && typeof(event) !== 'string') {event = `${event.path[0].innerText}`};
+>>>>>>> 1fc9d149f047ff9d87d6db40dd94d2d9e4f19ebc
   if (event === 'home') url = 'https://gnews.io/api/v4/top-headlines?&';
   if (event !== 0 && event !== 'home') url = 'https://gnews.io/api/v4/search?q=';
   if (event === 0) event = '';
   const promisse = await fetch(`${url}${event}&country=br&token=${apiToken}`);
+<<<<<<< HEAD
   console.log(`${url}${event}&country=br&token=${apiToken}`);
   return promisse.json();
+=======
+  return await promisse.json();
+>>>>>>> 1fc9d149f047ff9d87d6db40dd94d2d9e4f19ebc
 };
 
 const printNews = (news) => {
@@ -51,7 +59,6 @@ const addEventToNav = () => {
 
 const searchByInput = () => {
   main(document.querySelector('#input-news').value);
-  console.log(document.querySelector('#input-news').value);
 };
 
 const addEventToButton = () => {
