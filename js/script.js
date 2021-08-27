@@ -53,7 +53,7 @@ const saveNews = () => sessionStorage.setItem('news', document.querySelector('se
 
 const pickNewsFromStorage = () => {
   const news = sessionStorage.getItem('news');
-  if(news) { document.querySelector('section') = news }
+  if (news) { document.querySelector('section') = news }
 };
 
 const addEventToNav = () => {
@@ -88,4 +88,3 @@ window.onload = async function() {
   main();
   addEventToNav();
 };
-  

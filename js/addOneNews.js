@@ -1,5 +1,4 @@
-export const addNews = (title, description, image, linkNews) => {
-
+const addNews = (title, description, image, linkNews) => {
   const divCol = document.createElement('div');
   divCol.classList.add('col');
 
@@ -18,7 +17,7 @@ export const addNews = (title, description, image, linkNews) => {
 
   const p = document.createElement('p');
   p.classList.add('card-text');
-  p.innerText = description.substr(0, 230) + '...';
+  p.innerText = `${description.substr(0, 230)}'...'`;
 
   const openLink = document.createElement('a');
   openLink.href = linkNews;
@@ -26,12 +25,14 @@ export const addNews = (title, description, image, linkNews) => {
 
   cardBody.appendChild(h4);
   cardBody.appendChild(p);
-
   card.appendChild(img);
   card.appendChild(cardBody);
-
   openLink.appendChild(card);
   divCol.appendChild(openLink);
 
   return divCol;
-}
+};
+
+export default {
+  addNews,
+};

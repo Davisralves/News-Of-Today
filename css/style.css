@@ -3,56 +3,57 @@
   justify-content: space-evenly;
 }
 
-/* 
-  Pegamos como referecia o efeito da barra de pesquisa do 
+/*
+  Pegamos como referecia o efeito da barra de pesquisa do
   seguinte repositorio
   ref: https://github.com/antonyleme/CSS-Animations
 */
-.search{
-	background-color: #222f3e;
-	position: absolute;
+
+.search {
+  background-color: #222f3e;
+  position: absolute;
   top: 4%;
   left: 80%;
 
-	transform: translate(-50%, -50%);
-	border-radius: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-txt, .search-btn {
-	transition: 0.8s;
-	outline: none;
-	padding: 0;
-	border: none;
-	background: none;
+.search-txt , .search-btn {
+  transition: 0.8s;
+  outline: none;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .search-txt {
-	color: white;
-	width: 0;
-	float: left;
+  color: white;
+  width: 0;
+  float: left;
 }
 
 .search-btn {
-	border-radius: 40px;
-	color: white;
-	width: 40px;
-	height: 40px;
+  border-radius: 40px;
+  color: white;
+  width: 40px;
+  height: 40px;
 }
 
 .search-btn:active {
-	background-color: rgba(255,255,255,.5);
+  background-color: rgba(255,255,255,.5);
 }
 
 .search:hover > .search-txt {
-	width: 200px;
-	padding: 10px;
+  width: 200px;
+  padding: 10px;
 }
 
 .search:hover > .search-btn {
-	transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 button::-moz-focus-inner {
@@ -111,10 +112,8 @@ button::-moz-focus-inner {
   text-decoration: none;
 }
 
-
-
 .col h4 {
-  padding: 0 .1rem;
+  padding: 0 0.1rem;
   color: black;
 }
 
@@ -127,11 +126,11 @@ button::-moz-focus-inner {
   .main-col {
     width: 90vw;
   }
-  
+
   .main-col .card {
     flex-direction: row;
   }
-  
+
   .main-col img {
     width: 350px;
     max-width: 100%;
