@@ -1,9 +1,13 @@
-import { getJson } from "../js/script";
-import { object } from '../js/object.js';
-import { testElement } from "domutils";
+// ({ getJson } = require('../js/script'))
+const { describe } = require('yargs');
+jest.mock('../js/script');
+const getJson = require('../js/script');
+
+
+
 
 describe('Testando função getJson()', () => {
-  mockFunctions.getJson.mockImplementation(
+    getJson.mockImplementation(
     (event) => {
       if (event !== 0 && typeof(event) !== 'string') {event = '1'};
       if (event === 'home') event = '2';
@@ -11,10 +15,12 @@ describe('Testando função getJson()', () => {
       if (event === 0) event = '4';
       return event;
     });
-   test('Testa se os "if" funcionam corretamente)', () => {
-    expect(mockFunctions.getJson(0)).toBe('4');
-    expect(mockFunctions.getJson(1)).toBe('1');
-    expect(mockFunctions.getJson('home')).toBe('2');
-    expect(mockFunctions.getJson('outro')).toBe('3');
+   test('Testa se os "if" funcionam corretamente', () => {
+    expect(getJson(1)).toBe('1');    
+    expect(getJson('home')).toBe('2');
+    expect(getJson('outro')).toBe('3');
+    expect(getJson(0)).toBe('4');
    }); 
 });
+
+describe()

@@ -1,7 +1,7 @@
 import { apiToken } from '../key/apiKey.js';
 import { addNews } from './addOneNews.js'
 import { object } from '../js/object.js';
-export {getJson};
+
 
 // let url = ('https://gnews.io/api/v4/top-headlines?&');
 
@@ -51,12 +51,14 @@ const printNewsByCategory = async (category, event) => {
   printNews(news.articles, document.querySelector('section'));
 };
 
+/*
 const saveNews = () => sessionStorage.setItem('news', document.querySelector('section').innerHTML);
 
 const pickNewsFromStorage = () => {
   const news = sessionStorage.getItem('news');
   if(news) { document.querySelector('section') = news }
 };
+ */
 
 const addEventToNav = () => {
   const nav = document.querySelectorAll('li');
@@ -85,4 +87,4 @@ window.onload = async function() {
   addEventToButton();
 };
 
-export getJson;
+module.exports = getJson;

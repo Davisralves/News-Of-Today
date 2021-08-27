@@ -1,32 +1,30 @@
 {
-  "name": "imfit",
+  "name": "sd-0x-project-jest",
   "version": "1.0.0",
-  "description": "Projeto em grupo Trybe",
-  "main": "index.js",
-  "directories": {
-    "test": "test",
-    "js": "js",
-    "key": "key"
-  },
+  "description": "Jest project",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Davisralves/imFit.git"
+    "url": "git+https://github.com/betrybe/sd-0x-project-jest.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "javascript",
+    "tests",
+    "jest"
+  ],
+  "author": "Mauricio Hamaji",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Davisralves/imFit/issues"
+    "url": "https://github.com/betrybe/sd-0x-project-jest/issues"
   },
-  "homepage": "https://github.com/Davisralves/imFit#readme",
+  "homepage": "https://github.com/betrybe/sd-0x-project-jest#readme",
   "devDependencies": {
-    "eslint": "^7.32.0"
-  },
-  "dependencies": {
-    "common.js": "^1.1.1",
-    "eslint-config-trybe-fundamentals": "^1.1.1"
+    "acorn": "5.7.4",
+    "eslint-config-trybe-fundamentals": "1.1.0",
+    "jest": "24.9.0",
+    "minimist": "1.2.2"
   }
 }
