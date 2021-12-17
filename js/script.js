@@ -77,7 +77,7 @@ const addEventToButton = () => {
 window.onload = () => {
   main(); // Faz "Tudo"
   addEventToNav(); // adiciona eventos a barra de navegação
-  addEventToButton(); // adicona evento ao botão de pesquisa
+  addEventToButton(); // adiciona evento ao botão de pesquisa
 };
 
 module.exports = { getJson };
