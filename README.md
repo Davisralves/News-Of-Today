@@ -20,7 +20,7 @@ Com NewsOfToday podemos buscar por diversas noticias cotidianas em diferentes me
 
 ## 4. Design
 
-- [Site](http://127.0.0.1:5501/html/index.html)
+- [Site](https://davisralves.github.io/News-Of-Today/index.html)
 
 ## 5. Aprendizados
 - Procurar e identificar Apis bem documentadas.
